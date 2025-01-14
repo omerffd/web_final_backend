@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listings",
+  "info": {
+    "singularName": "listing",
+    "pluralName": "listings",
+    "displayName": "listings",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::favorite.favorite",
+      "mappedBy": "listing"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "photo_link": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string",
+      "required": true,
+      "maxLength": 15,
+      "minLength": 10
+    }
+  }
+}
